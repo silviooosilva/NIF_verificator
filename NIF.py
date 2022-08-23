@@ -11,11 +11,11 @@ from nif_main import *
 
 def banner():
     print(f'{C}-\033[m' * 30)
-    print(f'{C}|IDENTIFICADOR DE N.I.F. 1.0|\033[m')
+    print(f'{C}|IDENTIFICADOR DE N.I.F. 2.0|\033[m')
     print(f'{C}-\033[m' * 30)
 
-
 banner()
+
 NIF = str(input(f'DIGITE O SEU N.I.F.:\n>'))
 print('-' * 30)
 print(validarNIF(NIF))
