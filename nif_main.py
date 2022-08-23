@@ -6,10 +6,11 @@
 #        10/02/2021          #
 ##############################
 
-from re import compile
+import re
+
 
 # definindo o padrao para um NIF
-padraoNIF = compile(r'(\d+)([A-Z]+)(\d+)')
+padraoNIF = re.compile(r'^\d{9}[A-Z]{2}\d{3}$')
 g = '\033[1;32m'
 r = '\033[1;31m'
 B = '\033[1;34m'
@@ -19,15 +20,15 @@ C = '\033[1;36m'
 def validarNIF(nif: str):
     resultado = padraoNIF.search(nif)
     if resultado:
-        return f"{g}[i] - SIM É UM NIF VÁLIDO..\033[m"
+        return f"{g}[!] - SIM É UM NIF VÁLIDO..\033[m"
     else:
-        return f"{r}[x] - NÃO É UM NIF VÁLIDO..\033[m"
+        return f"{r}[X] - NÃO É UM NIF VÁLIDO..\033[m"
 
 
 if __name__ == '__main__':
-    exemploNIF1 = '123456AB7890'  # um NIF aparentemente valido
-    exemploNIF2 = '09876cd54321'  # um NIF com letras minusculas
-    exemploNIF3 = 'EF1234567890'  # um NIF com letras no inicio do padrao
+    exemploNIF1 = '007778467LA042'  # um NIF aparentemente valido
+    exemploNIF2 = '007778467la042'  # um NIF com letras minusculas
+    exemploNIF3 = 'LA7778467042'  # um NIF com letras no inicio do padrao
     exemploNIF4 = '1234567890GH'  # um NIF com letras no final do padrao
     print(f"{exemploNIF1} é um NIF válido?: {validarNIF(exemploNIF1)}")
     print(f"{exemploNIF2} é um NIF válido?: {validarNIF(exemploNIF2)}")
